@@ -17,7 +17,7 @@
         </header>
         <!-- 导航 -->
         <div id="nav">
-            <div class="nav-left">
+            <div class="nav-left" >
                 <ul class="nav-list">
                     <li class="nav-item">
                         <span>推荐</span>
@@ -179,7 +179,7 @@
                 <div class="cargo-text">
                     <p>9.9超值专区首发</p>
                     <p>180款爆品新定价</p>
-                </div> 
+                </div>
                 <div class="cargo-img">
                     <img src="https://yanxuan-item.nosdn.127.net/b2065eab67acc5923a8ec71167a35f6a.png" alt="">
                     <img src="https://yanxuan-item.nosdn.127.net/569ab2c87df93c56de39b8c890463242.png" alt="">
@@ -189,7 +189,7 @@
                 <div class="cargo-text">
                     <p>9.9超值专区首发</p>
                     <p>180款爆品新定价</p>
-                </div> 
+                </div>
                 <div class="cargo-img">
                     <img src="https://yanxuan-item.nosdn.127.net/b2065eab67acc5923a8ec71167a35f6a.png" alt="">
                     <img src="https://yanxuan-item.nosdn.127.net/569ab2c87df93c56de39b8c890463242.png" alt="">
@@ -199,7 +199,7 @@
                 <div class="cargo-text">
                     <p>9.9超值专区首发</p>
                     <p>180款爆品新定价</p>
-                </div> 
+                </div>
                 <div class="cargo-img">
                     <img src="https://yanxuan-item.nosdn.127.net/b2065eab67acc5923a8ec71167a35f6a.png" alt="">
                     <img src="https://yanxuan-item.nosdn.127.net/569ab2c87df93c56de39b8c890463242.png" alt="">
@@ -209,7 +209,7 @@
                 <div class="cargo-text">
                     <p>9.9超值专区首发</p>
                     <p>180款爆品新定价</p>
-                </div> 
+                </div>
                 <div class="cargo-img">
                     <img src="https://yanxuan-item.nosdn.127.net/b2065eab67acc5923a8ec71167a35f6a.png" alt="">
                     <img src="https://yanxuan-item.nosdn.127.net/569ab2c87df93c56de39b8c890463242.png" alt="">
@@ -218,31 +218,94 @@
             </div>
             </div>
         </div>
+        <!-- 私人定制 -->
+        <div id="custom-container">
+          <div class="custom-text">
+            <span>私人定制</span>
+          </div>
+          <div class="custom-shops">
+            <div class="custom-shop">
+              <div class="custom-shop-list">
+                <div class="custom-shop1">
+                  <div class="custom-img">
+                    <img src="https://yanxuan-item.nosdn.127.net/d9376c059ce15a774199e2cedc5a8d63.png?imageView&quality=65&thumbnail=330x330" alt="">
+                  </div>
+                  <div class="custom-text">
+                    <div class="custom-span">
+                      <span>
+                        全净皓齿变速式声波电动牙... <span>￥888</span>
+                      </span>
+
+                    </div>
+                  </div>
+                </div>
+                <div class="custom-shop1">
+                  <div class="custom-img">
+                    <img src="https://yanxuan-item.nosdn.127.net/d9376c059ce15a774199e2cedc5a8d63.png?imageView&quality=65&thumbnail=330x330" alt="">
+                  </div>
+                  <div class="custom-text">
+                    <div class="custom-span">
+                      <span>
+                        全净皓齿变速式声波电动牙...<span>￥888</span>
+                      </span>
+
+                    </div>
+                  </div>
+                </div>
+                <div class="custom-shop1">
+                  <div class="custom-img">
+                    <img src="https://yanxuan-item.nosdn.127.net/d9376c059ce15a774199e2cedc5a8d63.png?imageView&quality=65&thumbnail=330x330" alt="">
+                  </div>
+                  <div class="custom-text">
+                    <div class="custom-span">
+                      <span>
+                        网易智造T300无线吸尘...<span>￥888</span>
+                      </span>
+
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        
+      </div>
+
     </div>
   </div>
-  
+
 </template>
 
 <script type="text/ecmascript-6">
 import Swiper from 'swiper'
 import 'swiper/dist/css/swiper.css'
+// import BScroll from '@better-scroll/core'
   export default {
     mounted(){
         new Swiper ('.swiper-container', {
           loop: true // 循环模式选项
         })
-    }
-  
-   }
+
+     },
+    //  watch:{
+    //    nevLeft(){
+    //       this.$nextTick(()=>{
+    //         new BScroll('.nav-left', {
+    //            scrollX:true
+    //       })
+    //    })
+    //  }
+
+    // }
+  }
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
 #container
   width 100%
   height 100%
- 
+  background-color #eee
   #home-container
     width 100%
     height 100%
@@ -268,7 +331,7 @@ import 'swiper/dist/css/swiper.css'
           display inline-block
           margin-right  20px
           background-size 138px 40px
-          background-image (url(//yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/indexLogo-a90bdaae6b.png))
+          background-image url(//yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/indexLogo-a90bdaae6b.png)
         .header-input
           width 442px
           height 56px
@@ -280,7 +343,7 @@ import 'swiper/dist/css/swiper.css'
           vertical-align middle
          .icon
             width 28px
-            height 28px 
+            height 28px
             margin-right  10px
             background-image url(//yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/search2-553dba3aff.png);
             background-size 28px 28px
@@ -320,16 +383,16 @@ import 'swiper/dist/css/swiper.css'
             font-size 30px
             line-height 60px
             text-align center
-      .nav-more  
-        display inline-block 
+      .nav-more
+        display inline-block
         width 20%
-        height 60px   
-        .nav-img 
+        height 60px
+        .nav-img
           display inline-block
           width 30px
           height 30px
           margin-left 60px
-          background-size 30px 30px 
+          background-size 30px 30px
           background-image url(//yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/arrow-down-3-799ded53ea.png)
 
     // 轮播图
@@ -341,7 +404,7 @@ import 'swiper/dist/css/swiper.css'
         height 100%
         .swiper-wrapper
         .swiper-slide
-          img 
+          img
             width 100%
             height 370px
     //商家承诺
@@ -351,7 +414,7 @@ import 'swiper/dist/css/swiper.css'
       .app-list
         width 100%
         height 72px
-        display flex 
+        display flex
         padding 0 20px
         box-sizing border-box
         justify-content space-around
@@ -359,7 +422,7 @@ import 'swiper/dist/css/swiper.css'
         .serve-item
           width 456px
           height 72px
-          display flex 
+          display flex
           padding 0 10rpx
           justify-content flex-start
           align-items center
@@ -375,10 +438,10 @@ import 'swiper/dist/css/swiper.css'
             background-image url(https://yanxuan.nosdn.127.net/2d0402ffcd52b3ec3b07422681c42a89.png)
           .icon-3
             background-image url(https://yanxuan.nosdn.127.net/a03dd909803b9ac032eba58b7253a2f6.png)
-          span 
+          span
             font-size 20px
             color #333
-            vertical-align middle   
+            vertical-align middle
     // 商品展示
     #shop-show
       width 100%
@@ -396,17 +459,17 @@ import 'swiper/dist/css/swiper.css'
             display inline-block
             width 110px
             height 110px
-            img 
+            img
               width 110px
               height 110px
-            span 
+            span
               font-size 20px
               color #333
               text-align center
     .shop-img
       img
         width 100%
-        height 127px 
+        height 127px
     // 好货展示
     #good-cargo
       width 100%
@@ -414,8 +477,9 @@ import 'swiper/dist/css/swiper.css'
       .cargo-container
         width 100%
         height 580px
+        background-color #fff
         .cargo-list
-          padding 5px 15px 5px 15px 
+          padding 5px 15px 5px 15px
           box-sizing border-box
           .cargo-item
             width 343px
@@ -431,14 +495,59 @@ import 'swiper/dist/css/swiper.css'
               flex-direction column
               p
                 margin 10px 0 0 10px
-              :nth-child(2) 
+              :nth-child(2)
                 font-size 20px
                 color #7f7f7f
-                
+
             .cargo-img
               display flex
               img
                 width 150px
-                height 150px  
+                height 150px
+
+    // 私人定制
+    #custom-container
+      width 100%
+      height 470px
+      background-color #fff
+      .custom-text
+        width 100%
+        height 100px
+        font-size 34px
+        color #333
+        line-height 100px
+        padding 0 20px
+      .custom-shops
+        width 100%
+        height 370px
+        .custom-shop
+          width 100%
+          height 370px
+          .custom-shop-list
+            width 100%
+            height 310px
+            display flex
+            justify-content space-around
+            .custom-shop1
+              height 300px
+              width 216px
+              .custom-img
+                width 216px
+                img
+                  width 216px
+                  height 216px
+                  margin 0 auto
+              .custom-text
+                line-height 30px
+                .custom-span
+                  display flex
+                  span
+                    font-size 25px
+
+                    span
+                      font-size 20px
+                      color red
+
+
 </style>
 

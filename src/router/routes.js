@@ -24,9 +24,6 @@ export default[
   {
     path:"/aperson",
     component:Aperson,
-    meta:{
-      isShowFooter:true //底部是否显示
-    }
   },
   {
     path:"/casegoods",

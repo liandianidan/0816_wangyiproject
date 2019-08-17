@@ -2,32 +2,51 @@
   <!-- 底部 -->
     <div id="footer">
       <ul class="footer-nav">
-        <li class="footer-item">
-          <i class="iconfont icon-home"></i>
-          <span>首页</span>
-        </li>
-        <li class="footer-item">
-          <i class="iconfont icon-iconyihuifu-"></i>
-          <span>分类</span>
-        </li>
-        <li class="footer-item">
+        <router-link to="/home">
+          <li class="footer-item" > 
+            <i class="iconfont icon-home"></i>
+            <span>首页</span>
+          </li>
+        </router-link>
+        <router-link to="/classify">
+           <li class="footer-item">
+            <i class="iconfont icon-iconyihuifu-"></i>
+            <span>分类</span>
+          </li>
+        </router-link>
+       <router-link to="casegoods">
+         <li class="footer-item">
           <i class="iconfont icon-tupian"></i>
           <span>识物</span>
-        </li>
-        <li class="footer-item">
-          <i class="iconfont icon-gouwuche"></i>
-          <span>购物车</span>
-        </li>
-        <li class="footer-item">
-          <i class="iconfont icon-geren"></i>
-          <span>个人</span>
-        </li>
+         </li>
+       </router-link>
+        <router-link to="/shopping">
+          <li class="footer-item">
+            <i class="iconfont icon-gouwuche"></i>
+            <span>购物车</span>
+          </li>
+        </router-link>
+        <router-link to="aperson">
+          <li class="footer-item">
+            <i class="iconfont icon-geren"></i>
+            <span>个人</span>
+          </li>
+        </router-link>
+        
       </ul>
     </div>
 </template>
 
 <script type="text/ecmascript-6">
   export default {
+    // :class="{on:$route.path==='/home'}" @click="goTo('/home')"
+    // name:'Footer',
+    // methods:{
+    //   goTo(path){
+    //     this.$router.replace(path)
+        
+    //   }
+    // }
   }
 </script>
 
