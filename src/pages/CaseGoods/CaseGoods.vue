@@ -2,15 +2,18 @@
   <div id="app">
     <div id="casegoods-container">
       <div id="casegoods-flixe">
+        <!--头部-->
         <div id="casegoods-header">
           <div class="casegoods-header-content">
             <div class="casegoods-home">
               <i class="iconfont icon-shouye"></i>
             </div>
-            <div class="casegoods-text">
-              <span class="casegoods-span1 active">发现</span>
-              <span class="casegoods-span2">甄选家</span>
-            </div>
+            <Header>
+              <div class="casegoods-text" slot="casegoods">
+                <span class="casegoods-span1 active">发现</span>
+                <span class="casegoods-span2">甄选家</span>
+              </div>
+            </Header>
             <div class="icon-casegoods">
               <i class="iconfont icon-sousuo"></i>
               <i class="iconfont icon-gouwuche"></i>
@@ -19,45 +22,41 @@
           </div>
 
         </div>
+        <!--导航-->
         <div id="casegoods-nav">
-          <ul class="casegoods-list">
-            <li class="casegoods-item active">
-              <span>盛夏特别版</span>
-            </li>
-            <li class="casegoods-item">
-              <span>盛夏特别版</span>
-            </li>
-            <li class="casegoods-item">
-              <span>盛夏特别版</span>
-            </li>
-            <li class="casegoods-item">
-              <span>盛夏特别版</span>
-            </li>
-            <li class="casegoods-item">
-              <span>盛夏特别版</span>
-            </li>
-            <li class="casegoods-item">
-              <span>盛夏特别版</span>
-            </li>
-            <li class="casegoods-item">
-              <span>盛夏特别版</span>
-            </li>
-            <li class="casegoods-item">
-              <span>盛夏特别版</span>
-            </li>
-          </ul>
-        </div>
-        <header id="casegoods-header2">
-          <!-- 搜索框 -->
-          <div class="header">
-            <div class="header-text"></div>
-            <div class="header-input">
-              <i class="icon iconfont icon-sousuo1"></i>
-              <span class="header-search">搜索商品, 共21615款好物</span>
-            </div>
-            <button class="header-btn">登录</button>
+          <div class="nav">
+            <ul class="casegoods-list">
+              <li class="casegoods-item active">
+                <span>盛夏特别版</span>
+              </li>
+              <li class="casegoods-item">
+                <span>盛夏特别版</span>
+              </li>
+              <li class="casegoods-item">
+                <span>盛夏特别版</span>
+              </li>
+              <li class="casegoods-item">
+                <span>盛夏特别版</span>
+              </li>
+              <li class="casegoods-item">
+                <span>盛夏特别版</span>
+              </li>
+              <li class="casegoods-item">
+                <span>盛夏特别版</span>
+              </li>
+              <li class="casegoods-item">
+                <span>盛夏特别版</span>
+              </li>
+              <li class="casegoods-item">
+                <span>盛夏特别版</span>
+              </li>
+            </ul>
           </div>
-        </header>
+        </div>
+        <!--第二个头部-->
+        <HeaderLogin>
+          <slot name="login"></slot>>
+        </HeaderLogin>
       </div>
       <div id="casegoods-content">
         <div>
@@ -161,13 +160,18 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import Swiper from 'swiper'
-  import 'swiper/dist/css/swiper.css'
+  import BScroll from '@better-scroll/core'
+  import HeaderLogin from '../../components/Header/HeaderLogin'
   export default {
+    components:{
+      HeaderLogin
+    },
     mounted(){
-      new Swiper('.swiper-container',{
-        effect : 'fade',
-        autoplay:true
+      new BScroll('.nav', {
+        startX:0,
+        click:true,
+        scrollX:true,
+        scrollY:false
       })
     }
 
@@ -231,23 +235,25 @@
           height 72px
           background #FAFAFA
           padding-bottom 10px
-
-          .casegoods-list
-            height 100%
-            padding-bottom 10px
-            display flex
-            border-bottom 2px solid #eee
-            box-sizing border-box
-            .casegoods-item
-              font-size 30px
-              margin 0 15px
+          .nav
+            width 100%
+            height 72px
+            .casegoods-list
+              height 100%
+              padding-bottom 10px
               display flex
-              justify-content center
-              align-items center
-              flex-shrink 0
-              &.active
-                border-bottom 2px solid #B4282D
-                color #B4282D
+              border-bottom 2px solid #eee
+              box-sizing border-box
+              .casegoods-item
+                font-size 30px
+                margin 0 15px
+                display flex
+                justify-content center
+                align-items center
+                flex-shrink 0
+                &.active
+                  border-bottom 2px solid #B4282D
+                  color #B4282D
 
 
 
@@ -260,6 +266,7 @@
           .header
             display flex
             height 88px
+            width 100%
             padding 25px
             box-sizing border-box
             .header-text

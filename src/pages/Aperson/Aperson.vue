@@ -1,21 +1,8 @@
 <template>
   <div id="app">
-    <div id="header">
-      <div class="header-content">
-        <div>
-          <i class="iconfont icon-shouye"></i>
-        </div>
-        <div href="javascript:;" class="icon-img"></div>
-        <div href="javascript:;">
-          <i class="iconfont icon-sousuo"></i>
-        </div>
-        <div href="javascript:;">
-          <i class="iconfont icon-gouwuche"></i>
-        </div>
-
-      </div>
-
-    </div>
+    <Header>
+      <div  class="icon-img" slot="aperson"></div>
+    </Header>
     <div id="content">
       <div class="content-img">
         <img src="//yanxuan.nosdn.127.net/bd139d2c42205f749cd4ab78fa3d6c60.png" alt="">
@@ -58,7 +45,11 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import Header from '../../components/Header/Header.vue'
   export default {
+    components:{
+      Header
+    }
   }
 </script>
 
@@ -87,8 +78,6 @@
           width 172px
           height 54px
           margin 0 100px 0 200px
-
-
     #content
       width 100%
       margin-bottom 300px

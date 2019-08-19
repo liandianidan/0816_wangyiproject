@@ -4,7 +4,7 @@
       <ul class="footer-nav">
         <router-link to="/home">
           <li class="footer-item" >
-            <i class="iconfont icon-home_normal"></i>
+            <i class="iconfont icon-shouye"></i>
             <span>首页</span>
           </li>
         </router-link>
@@ -58,7 +58,7 @@
     position fixed
     bottom 0
     left 0
-    z-index 999
+    z-index 1
     .footer-nav
       width 100%
       height 100%

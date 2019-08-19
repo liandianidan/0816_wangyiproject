@@ -5,56 +5,50 @@
         <div id="top-contarner">
         <!-- 头部 -->
         <header id="header">
-            <!-- 搜索框 -->
-            <div class="header">
-            <div class="header-text"></div>
-            <div class="header-input">
-                <i class="icon iconfont icon-sousuo1"></i>
-                <span class="header-search">搜索商品, 共21615款好物</span>
-            </div>
-            <button class="header-btn">登录</button>
-            </div>
-        </header>
-        <!-- 导航 -->
-        <div id="nav">
+          <!-- 搜索框 -->
+          <HeaderLogin></HeaderLogin>
+          <Mack v-show="isshowMack" @click="showMack"/>
+          <!-- 导航 -->
+          <div id="nav" v-show="isShowNav">
             <div class="nav-left" >
-                <ul class="nav-list">
-                    <li class="nav-item">
-                        <span>推荐</span>
-                    </li>
-                    <li class="nav-item">
-                        <span>家居生活</span>
-                    </li>
-                    <li class="nav-item">
-                        <span>服饰鞋包</span>
-                    </li>
-                    <li class="nav-item">
-                        <span>美食酒水</span>
-                    </li>
-                    <li class="nav-item">
-                        <span>美食酒水</span>
-                    </li>
-                    <li class="nav-item">
-                        <span>美食酒水</span>
-                    </li>
-                    <li class="nav-item">
-                        <span>美食酒水</span>
-                    </li>
-                    <li class="nav-item">
-                        <span>美食酒水</span>
-                    </li>
-                    <li class="nav-item">
-                        <span>美食酒水</span>
-                    </li>
-                    <li class="nav-item">
-                        <span>美食酒水</span>
-                    </li>
-                </ul>
+              <ul class="nav-list">
+                <li class="nav-item">
+                  <span>推荐</span>
+                </li>
+                <li class="nav-item">
+                  <span>家居生活</span>
+                </li>
+                <li class="nav-item">
+                  <span>服饰鞋包</span>
+                </li>
+                <li class="nav-item">
+                  <span>美食酒水</span>
+                </li>
+                <li class="nav-item">
+                  <span>美食酒水</span>
+                </li>
+                <li class="nav-item">
+                  <span>美食酒水</span>
+                </li>
+                <li class="nav-item">
+                  <span>美食酒水</span>
+                </li>
+                <li class="nav-item">
+                  <span>美食酒水</span>
+                </li>
+                <li class="nav-item">
+                  <span>美食酒水</span>
+                </li>
+                <li class="nav-item">
+                  <span>美食酒水</span>
+                </li>
+              </ul>
             </div>
-            <div class="nav-more">
-                <div class="nav-img"></div>
+            <div class="nav-more" @click="showHidden">
+              <div class="nav-img"></div>
             </div>
-            </div>
+          </div>
+        </header>
         <!-- 轮播图 -->
         <div id="banner">
             <div class="swiper-container">
@@ -289,8 +283,21 @@
 <script type="text/ecmascript-6">
 import Swiper from 'swiper'
 import 'swiper/dist/css/swiper.css'
-// import BScroll from '@better-scroll/core'
-  export default {
+import BScroll from '@better-scroll/core'
+import HeaderLogin from '../../components/Header/HeaderLogin.vue'
+import Mack from '../../components/Mack/Mack.vue'
+    export default {
+
+    data(){
+      return{
+        isShowNav:true,
+        isshowMack:false
+      }
+    },
+    components:{
+      HeaderLogin,
+      Mack
+    },
     mounted(){
         new Swiper ('.swiper-container', {
           loop: true// 循环模式选项
@@ -301,17 +308,24 @@ import 'swiper/dist/css/swiper.css'
           slidesPerView : 3
 
         })
+        new BScroll('.nav-left', {
+              startX:0,
+              click:true,
+              scrollX:true,
+              scrollY:false
+          })
      },
-    //  watch:{
-    //    nevLeft(){
-    //       this.$nextTick(()=>{
-    //         new BScroll('.nav-left', {
-    //            scrollX:true
-    //       })
-    //    })
-    //  }
+    methods:{
+      showHidden(){
+        this.isShowNav=false
+        this.isshowMack=true
+      },
+      showMack(){
+        alert('sssssssss')
+        this.isshowMack=false
+      }
+    }
 
-    // }
   }
 </script>
 
@@ -330,7 +344,6 @@ import 'swiper/dist/css/swiper.css'
         height 100%
         padding-top 100px
         padding-bottom 100px
-
         // 头部
         #header
           position fixed
@@ -343,7 +356,9 @@ import 'swiper/dist/css/swiper.css'
           .header
             display flex
             height 88px
+            width 100%
             padding 25px
+            background-color #fff
             box-sizing border-box
             .header-text
               width 138px
@@ -395,6 +410,7 @@ import 'swiper/dist/css/swiper.css'
             height 60px
             overflow hidden
             .nav-list
+              width 1000px
               height 100%
               display flex
               .nav-item
