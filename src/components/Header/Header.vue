@@ -2,20 +2,16 @@
   <div id="app">
     <div id="header">
       <div class="header-content">
-        <div>
+        <div @click="$router.push('./home')">
           <i class="iconfont icon-shouye"></i>
         </div>
-        <slot name="aperson" >
-
-        </slot>
-        <slot name="casegoods">
-
-        </slot>
+        <slot name="aperson" ></slot>
+        <slot name="casegoods"></slot>
         <div >
-          <i class="iconfont icon-sousuo"></i>
+          <i class="iconfont icon-sousuo" @click="$router.push('/search')"></i>
         </div>
         <div >
-          <i class="iconfont icon-gouwuche"></i>
+          <i class="iconfont icon-gouwuche" @click="$router.push('/shopping')"></i>
         </div>
 
       </div>

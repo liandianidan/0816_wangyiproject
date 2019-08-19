@@ -1,33 +1,33 @@
 <template>
   <!-- 底部 -->
-    <div id="footer">
+    <div id="footer" v-show="$route.meta.isShowFooter">
       <ul class="footer-nav">
         <router-link to="/home">
-          <li class="footer-item" >
+          <li class="footer-item" :class="{active:isShow===0}" @click="isShow=0">
             <i class="iconfont icon-shouye"></i>
             <span>首页</span>
           </li>
         </router-link>
         <router-link to="/classify">
-           <li class="footer-item">
+           <li class="footer-item" :class="{active:isShow===1}" @click="isShow=1">
             <i class="iconfont icon-fenlei"></i>
             <span>分类</span>
           </li>
         </router-link>
        <router-link to="casegoods">
-         <li class="footer-item">
+         <li class="footer-item" :class="{active:isShow===2}" @click="isShow=2">
           <i class="iconfont icon-shiwu"></i>
           <span>识物</span>
          </li>
        </router-link>
         <router-link to="/shopping">
-          <li class="footer-item">
+          <li class="footer-item" :class="{active:isShow===3}" @click="isShow=3">
             <i class="iconfont icon-gouwuche"></i>
             <span>购物车</span>
           </li>
         </router-link>
         <router-link to="aperson">
-          <li class="footer-item">
+          <li class="footer-item" :class="{active:isShow===4}" @click="isShow=4">
             <i class="iconfont icon-ren"></i>
             <span>个人</span>
           </li>
@@ -39,14 +39,13 @@
 
 <script type="text/ecmascript-6">
   export default {
-    // :class="{on:$route.path==='/home'}" @click="goTo('/home')"
-    // name:'Footer',
-    // methods:{
-    //   goTo(path){
-    //     this.$router.replace(path)
-
-    //   }
-    // }
+    data(){
+      return{
+        isShow:0
+      }
+    },
+    methods:{
+    }
   }
 </script>
 
@@ -71,6 +70,8 @@
         flex-direction column
         justify-content center
         align-items center
+        &.active
+          color #b4282d
         .iconfont
           font-size 40px
         span

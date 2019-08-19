@@ -5,7 +5,7 @@
         <!--头部-->
         <div id="casegoods-header">
           <div class="casegoods-header-content">
-            <div class="casegoods-home">
+            <div class="casegoods-home" @click="$router.push('/home')">
               <i class="iconfont icon-shouye"></i>
             </div>
             <Header>
@@ -15,8 +15,8 @@
               </div>
             </Header>
             <div class="icon-casegoods">
-              <i class="iconfont icon-sousuo"></i>
-              <i class="iconfont icon-gouwuche"></i>
+              <i class="iconfont icon-sousuo" @click="$router.push('/search')"></i>
+              <i class="iconfont icon-gouwuche" @click="$router.push('/shopping')"></i>
             </div>
 
           </div>
@@ -161,6 +161,8 @@
 
 <script type="text/ecmascript-6">
   import BScroll from '@better-scroll/core'
+  import Swiper from 'swiper'
+  import 'swiper/dist/css/swiper.css'
   import HeaderLogin from '../../components/Header/HeaderLogin'
   export default {
     components:{
@@ -172,6 +174,10 @@
         click:true,
         scrollX:true,
         scrollY:false
+      })
+      new Swiper('.swiper-wrapper',{
+        effect : 'fade',
+        autoplay:true
       })
     }
 

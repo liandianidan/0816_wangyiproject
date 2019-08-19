@@ -2,7 +2,12 @@
   <div id="app">
     <div id="classify-h">
       <!--分类的头部-->
-      <HeaderSearch/>
+      <div id="header-content" @click="$router.push('/search')">
+        <div class="header">
+          <i class="icon iconfont icon-sousuo"></i>
+          <span class="header-search">搜索商品, 共21615款好物</span>
+        </div>
+      </div>
       <!--分类的内容区-->
       <div id="classify-c">
         <!--内容的左边-->
@@ -124,12 +129,9 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import HeaderSearch from '../../components/Header/HeaderSearch.vue'
   import BScroll from '@better-scroll/core'
   export default {
-    components:{//注册组件
-      HeaderSearch
-    },
+
     mounted() {
       new BScroll('.classify-container', {
         startX:0,
