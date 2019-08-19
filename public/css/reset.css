@@ -91,6 +91,13 @@ input {
   vertical-align: baseline;
 }
 
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow:hidden;
+    overflow-y:auto;
+}
 /* HTML5 display-role reset for older browsers */
 article,
 aside,
@@ -159,11 +166,6 @@ li {
   -webkit-border-radius: 6px;
 }
 
-html,
-body {
-  width: 100%;
-  height: 100%;
-}
 
 body {
   -webkit-text-size-adjust: none;

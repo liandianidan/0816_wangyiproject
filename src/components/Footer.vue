@@ -3,20 +3,20 @@
     <div id="footer">
       <ul class="footer-nav">
         <router-link to="/home">
-          <li class="footer-item" > 
-            <i class="iconfont icon-home"></i>
+          <li class="footer-item" >
+            <i class="iconfont icon-home_normal"></i>
             <span>首页</span>
           </li>
         </router-link>
         <router-link to="/classify">
            <li class="footer-item">
-            <i class="iconfont icon-iconyihuifu-"></i>
+            <i class="iconfont icon-fenlei"></i>
             <span>分类</span>
           </li>
         </router-link>
        <router-link to="casegoods">
          <li class="footer-item">
-          <i class="iconfont icon-tupian"></i>
+          <i class="iconfont icon-shiwu"></i>
           <span>识物</span>
          </li>
        </router-link>
@@ -28,11 +28,11 @@
         </router-link>
         <router-link to="aperson">
           <li class="footer-item">
-            <i class="iconfont icon-geren"></i>
+            <i class="iconfont icon-ren"></i>
             <span>个人</span>
           </li>
         </router-link>
-        
+
       </ul>
     </div>
 </template>
@@ -44,7 +44,7 @@
     // methods:{
     //   goTo(path){
     //     this.$router.replace(path)
-        
+
     //   }
     // }
   }
@@ -75,6 +75,6 @@
           font-size 40px
         span
           display inline-block
-          font-size 30px 
-          margin-top 5px 
+          font-size 30px
+          margin-top 5px
 </style>

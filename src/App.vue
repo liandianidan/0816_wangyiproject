@@ -1,6 +1,6 @@
 <template>
 
-  <div>
+  <div id="">
     <router-view></router-view>
     <Footer/>
   </div>
@@ -10,13 +10,16 @@
 import Footer from './components/Footer.vue'
 
 export default {
-  // name: 'app',
+  name: 'app',
   components: {
     Footer
   }
 }
 </script>
 
-<style>
-
+<style lang="stylus" rel="stylesheet/stylus">
+  body
+    width 100%
+    height 100%
+    background-color #F2F5F4
 </style>
