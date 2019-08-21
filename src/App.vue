@@ -1,6 +1,6 @@
 <template>
 
-  <div id="">
+  <div id="app">
     <router-view></router-view>
     <Footer/>
   </div>
@@ -23,4 +23,7 @@ export default {
     width 100%
     height 100%
     background-color #F2F5F4
+    #app
+      width 100%
+      height 100%
 </style>

@@ -3,31 +3,31 @@
     <div id="footer" v-show="$route.meta.isShowFooter">
       <ul class="footer-nav">
         <router-link to="/home">
-          <li class="footer-item" :class="{active:isShow===0}" @click="isShow=0">
+          <li class="footer-item" :class="{active:$route.path==='/home'}">
             <i class="iconfont icon-shouye"></i>
             <span>首页</span>
           </li>
         </router-link>
         <router-link to="/classify">
-           <li class="footer-item" :class="{active:isShow===1}" @click="isShow=1">
+           <li class="footer-item" :class="{active:$route.path==='/classify'}">
             <i class="iconfont icon-fenlei"></i>
             <span>分类</span>
           </li>
         </router-link>
-       <router-link to="casegoods">
-         <li class="footer-item" :class="{active:isShow===2}" @click="isShow=2">
+       <router-link to="/casegoods">
+         <li class="footer-item" :class="{active:$route.path==='/casegoods'}">
           <i class="iconfont icon-shiwu"></i>
           <span>识物</span>
          </li>
        </router-link>
         <router-link to="/shopping">
-          <li class="footer-item" :class="{active:isShow===3}" @click="isShow=3">
+          <li class="footer-item" :class="{active:$route.path==='/shopping'}">
             <i class="iconfont icon-gouwuche"></i>
             <span>购物车</span>
           </li>
         </router-link>
         <router-link to="aperson">
-          <li class="footer-item" :class="{active:isShow===4}" @click="isShow=4">
+          <li class="footer-item" :class="{active:$route.path==='/aperson'}">
             <i class="iconfont icon-ren"></i>
             <span>个人</span>
           </li>
@@ -39,13 +39,6 @@
 
 <script type="text/ecmascript-6">
   export default {
-    data(){
-      return{
-        isShow:0
-      }
-    },
-    methods:{
-    }
   }
 </script>
 

@@ -12,35 +12,10 @@
           <div id="nav" v-show="isShowNav">
             <div class="nav-left" >
               <ul class="nav-list">
-                <li class="nav-item">
-                  <span>推荐</span>
-                </li>
-                <li class="nav-item">
-                  <span>家居生活</span>
-                </li>
-                <li class="nav-item">
-                  <span>服饰鞋包</span>
-                </li>
-                <li class="nav-item">
-                  <span>美食酒水</span>
-                </li>
-                <li class="nav-item">
-                  <span>美食酒水</span>
-                </li>
-                <li class="nav-item">
-                  <span>美食酒水</span>
-                </li>
-                <li class="nav-item">
-                  <span>美食酒水</span>
-                </li>
-                <li class="nav-item">
-                  <span>美食酒水</span>
-                </li>
-                <li class="nav-item">
-                  <span>美食酒水</span>
-                </li>
-                <li class="nav-item">
-                  <span>美食酒水</span>
+                <li class="nav-item" v-for="(item, index) in ShowNavs"
+                    :key="index"
+                    @click="changeColor(index)" :class="{active:classIndex === index }">
+                  <span>{{item}}</span>
                 </li>
               </ul>
             </div>
@@ -50,24 +25,7 @@
           </div>
         </header>
         <!-- 轮播图 -->
-        <div id="banner">
-            <div class="swiper-container">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <img src="https://yanxuan.nosdn.127.net/fca5a6400454717c5b7d6c393071b307.jpg" alt="">
-                </div>
-                <div class="swiper-slide">
-                    <img src="https://yanxuan.nosdn.127.net/eda2f4fc108b2c1be7dd4eafe26b2daa.png" alt="">
-                </div>
-                <div class="swiper-slide">
-                    <img src="https://yanxuan.nosdn.127.net/41206124e95bb06e5493c20c55cf9e63.jpg" alt="">
-                </div>
-            </div>
-            <!-- 如果需要分页器 -->
-            <div class="swiper-pagination"></div>
-
-            </div>
-        </div>
+        <Banner></Banner>
         <!-- 商家服务 -->
         <div id="app-serve">
             <ul class="app-list">
@@ -284,26 +242,36 @@
 import Swiper from 'swiper'
 import 'swiper/dist/css/swiper.css'
 import BScroll from '@better-scroll/core'
+
 import HeaderLogin from '../../components/Header/HeaderLogin.vue'
 import Mack from '../../components/Mack/Mack.vue'
+import Banner from '../../components/Banner/Banner.vue'
+
+
     export default {
 
     data(){
       return{
         isShowNav:true,
-        isshowMack:false
+        isshowMack:false,
+        ShowNavs:["推荐","家居生活","服饰鞋包","美食酒水","个人清洁","母婴用品","运动旅行","数码家电","全球特色"],
+        classIndex:0
       }
     },
     components:{
       HeaderLogin,
-      Mack
+      Mack,
+      Banner
     },
     mounted(){
         new Swiper ('.swiper-container', {
-          loop: true// 循环模式选项
+          loop: true, // 循环模式选项
+          pagination: { //小圆点
+            el: '.swiper-pagination',
+          },
+          autoplay:true //自动轮播
 
         })
-
         new Swiper('.swiper-container2',{
           slidesPerView : 3
 
@@ -321,8 +289,10 @@ import Mack from '../../components/Mack/Mack.vue'
         this.isshowMack=true
       },
       showMack(){
-        alert('sssssssss')
         this.isshowMack=false
+      },
+      changeColor(index){
+        this.classIndex=index
       }
     }
 
@@ -342,7 +312,7 @@ import Mack from '../../components/Mack/Mack.vue'
       #home-container
         width 100%
         height 100%
-        padding-top 100px
+        padding-top 150px
         padding-bottom 100px
         // 头部
         #header
@@ -405,12 +375,13 @@ import Mack from '../../components/Mack/Mack.vue'
         #nav
           width 100%
           display  flex
+          background-color #fff
           .nav-left
             width 80%
             height 60px
             overflow hidden
             .nav-list
-              width 1000px
+              width 1400px
               height 100%
               display flex
               .nav-item
@@ -420,6 +391,9 @@ import Mack from '../../components/Mack/Mack.vue'
                 font-size 30px
                 line-height 60px
                 text-align center
+                &.active
+                  border-bottom 1px solid #b4282d
+                  color #b4282d
           .nav-more
             display inline-block
             width 20%
