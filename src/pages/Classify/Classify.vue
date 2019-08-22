@@ -141,6 +141,7 @@
           .classify-list
             /*width 1000px*/
             height 1300px
+            display inline-block
             .classify-item
               width 100%
               height 50px
@@ -177,22 +178,20 @@
                 width 528px
                 height 192px
                 margin 0  auto 30px
-
                 img
                   width 100%
                   height 100%
-
              .classify-bottom
                 width 100%
                 .classify-ul
                   width 100%
                   display flex
                   flex-wrap wrap
-                  justify-content space-around
+
                   .classify-li
                     width 144px
                     height 216px
-                    padding-right 20px
+                    padding-right 30px
                     .classify-div
                       height 100%
                       img

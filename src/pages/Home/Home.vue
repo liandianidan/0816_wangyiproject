@@ -7,10 +7,9 @@
         <header id="header">
           <!-- 搜索框 -->
           <HeaderLogin></HeaderLogin>
-          <Mack v-show="isshowMack" @click="showMack"/>
           <!-- 导航 -->
-          <div id="nav" v-show="isShowNav">
-            <div class="nav-left" >
+          <div id="nav" >
+            <div class="nav-left" v-show="isShowNav">
               <ul class="nav-list">
                 <li class="nav-item" v-for="(item, index) in ShowNavs"
                     :key="index"
@@ -19,9 +18,23 @@
                 </li>
               </ul>
             </div>
-            <div class="nav-more" @click="showHidden">
-              <div class="nav-img"></div>
+            <div class="mack" v-show="isshowMack" @click="showHidden">
+              <div class="mack-whole">
+                <div class="mack-text">全部频道</div>
+              </div>
+              <div class="mack-all">
+                <ul class="mack-ul">
+                  <li class="mack-li" v-for="(item,index) in ShowNavs " :key="index" :class="{active:classIndex === index }">{{item}}</li>
+                </ul>
+              </div>
+              <div class="mack"></div>
             </div>
+            <div class="nav-more" @click="showHidden" >
+              <div class="nav-img" >
+                <i class="iconfont icon-xiangxia1" :class="{isRotate:isShowNav}"></i>
+              </div>
+            </div>
+
           </div>
         </header>
         <!-- 轮播图 -->
@@ -29,23 +42,11 @@
         <!-- 商家服务 -->
         <div id="app-serve">
             <ul class="app-list">
-                <li class="serve-item">
-                <a href="#">
-                    <span class="icon-1 icon"></span>
-                    <span>网易自营品牌</span>
-                </a>
-                </li>
-                <li class="serve-item">
-                <a href="#">
-                    <span class="icon-2 icon"></span>
-                    <span>30天无忧退货</span>
-                </a>
-                </li>
-                <li class="serve-item">
-                <a href="#">
-                    <span class="icon-3 icon"></span>
-                    <span>24小时快速退款</span>
-                </a>
+                <li class="serve-item" v-for="(item,index) in policyDescList" :key="index">
+                  <a href="#">
+                    <img :src="item.icon" alt="">
+                    <span>{{item.desc}}</span>
+                  </a>
                 </li>
             </ul>
         </div>
@@ -55,66 +56,12 @@
         <!-- 商品展示 -->
         <div id="shop-show">
             <ul class="shop-list">
-            <li class="shop-item">
-                <a href="#" class="shop-a">
-                <img src="https://yanxuan.nosdn.127.net/5243a7191dd4c86b3b28859089273aa8.gif" alt="">
-                <span>新品首发</span>
-                </a>
-            </li>
-            <li class="shop-item">
-                <a href="#" class="shop-a">
-                <img src="https://yanxuan.nosdn.127.net/fede8b110c502ec5799702d5ec824792.png" alt="">
-                <span>家居生活</span>
-                </a>
-            </li>
-            <li class="shop-item">
-                <a href="#" class="shop-a">
-                <img src="https://yanxuan.nosdn.127.net/2415a74cea7d3f080c2dcaa791884572.png" alt="">
-                <span>服饰鞋包</span>
-                </a>
-            </li>
-            <li class="shop-item">
-                <a href="#" class="shop-a">
-                <img src="https://yanxuan.nosdn.127.net/d916591adea776351e084016335e5820.png" alt="">
-                <span>美食酒水</span>
-                </a>
-            </li>
-            <li class="shop-item">
-                <a href="#" class="shop-a">
-                <img src="https://yanxuan.nosdn.127.net/6c3bd9d885c818b1f73e497335a68b47.png" alt="">
-                <span>个护清洁</span>
-                </a>
-            </li>
-            <li class="shop-item">
-                <a href="#" class="shop-a">
-                <img src="https://yanxuan.nosdn.127.net/559d2a240ec20b096590a902217009ff.png" alt="">
-                <span>母婴亲子</span>
-                </a>
-            </li>
-            <li class="shop-item">
-                <a href="#" class="shop-a">
-                <img src="https://yanxuan.nosdn.127.net/5c088559ebcc3f0ffcda663f04dfbeb2.png" alt="">
-                <span>运动旅行</span>
-                </a>
-            </li>
-            <li class="shop-item">
-                <a href="#" class="shop-a">
-                <img src="https://yanxuan.nosdn.127.net/fbca8e1f2948f0c09fc7672c2c125384.png" alt="">
-                <span>数码家电</span>
-                </a>
-            </li>
-            <li class="shop-item">
-                <a href="#" class="shop-a">
-                <img src="https://yanxuan.nosdn.127.net/f7281169d4e82d5d8d52aa1fec83fe01.png" alt="">
-                <span>全球特色</span>
-                </a>
-            </li>
-            <li class="shop-item">
-                <a href="#" class="shop-a">
-                <img src="https://yanxuan.nosdn.127.net/3954c3cbeb4359dd7007be7a076e0dda.gif" alt="">
-                <span>超级会员</span>
-                </a>
-            </li>
+              <li class="shop-item" v-for="(item,index) in kingKongModule" :key="index">
+                  <a href="#" class="shop-a">
+                  <img :src="item.picUrl" alt="">
+                  <span>{{item.text}}</span>
+                  </a>
+              </li>
             </ul>
         </div>
         <!-- 图片 -->
@@ -126,177 +73,107 @@
         <!-- 好货列表 -->
         <div id="good-cargo">
             <div class="cargo-container">
-            <div class="cargo-list">
-                <div class="cargo-item">
-                <div class="cargo-text">
-                    <p>9.9超值专区首发</p>
-                    <p>180款爆品新定价</p>
-                </div>
-                <div class="cargo-img">
-                    <img src="https://yanxuan-item.nosdn.127.net/b2065eab67acc5923a8ec71167a35f6a.png" alt="">
-                    <img src="https://yanxuan-item.nosdn.127.net/569ab2c87df93c56de39b8c890463242.png" alt="">
-                </div>
-                </div>
-                <div class="cargo-item">
-                <div class="cargo-text">
-                    <p>9.9超值专区首发</p>
-                    <p>180款爆品新定价</p>
-                </div>
-                <div class="cargo-img">
-                    <img src="https://yanxuan-item.nosdn.127.net/b2065eab67acc5923a8ec71167a35f6a.png" alt="">
-                    <img src="https://yanxuan-item.nosdn.127.net/569ab2c87df93c56de39b8c890463242.png" alt="">
-                </div>
-                </div>
-                <div class="cargo-item">
-                <div class="cargo-text">
-                    <p>9.9超值专区首发</p>
-                    <p>180款爆品新定价</p>
-                </div>
-                <div class="cargo-img">
-                    <img src="https://yanxuan-item.nosdn.127.net/b2065eab67acc5923a8ec71167a35f6a.png" alt="">
-                    <img src="https://yanxuan-item.nosdn.127.net/569ab2c87df93c56de39b8c890463242.png" alt="">
-                </div>
-                </div>
-                <div class="cargo-item">
-                <div class="cargo-text">
-                    <p>9.9超值专区首发</p>
-                    <p>180款爆品新定价</p>
-                </div>
-                <div class="cargo-img">
-                    <img src="https://yanxuan-item.nosdn.127.net/b2065eab67acc5923a8ec71167a35f6a.png" alt="">
-                    <img src="https://yanxuan-item.nosdn.127.net/569ab2c87df93c56de39b8c890463242.png" alt="">
-                </div>
-                </div>
-            </div>
+              <div class="cargo-list">
+                  <div class="cargo-item" v-for="(item,index) in goodShops" :key="index">
+                    <div class="cargo-text">
+                        <p>{{item.styleItem.title}}</p>
+                        <p>{{item.styleItem.desc}}</p>
+                    </div>
+                    <div class="cargo-img">
+                        <img :src="item.styleItem.picUrlList[0]" alt="">
+                        <img :src="item.styleItem.picUrlList[1]" alt="">
+                    </div>
+                  </div>
+              </div>
             </div>
         </div>
         <!-- 私人定制 -->
-        <div id="custom-container">
-          <div class="custom-text">
-            <span>私人定制</span>
-          </div>
-          <!--轮播-->
-          <div class="custom-shops">
-            <div class="custom-shop">
-              <div class="swiper-container2">
-                <div class="swiper-wrapper">
-                  <div class="swiper-slide shop-div">
-                    <img  class="shop-img" src="https://yanxuan-item.nosdn.127.net/d9376c059ce15a774199e2cedc5a8d63.png?imageView&quality=65&thumbnail=330x330" alt="">
-                    <p class="shop-p" >
-                      全净皓齿变速式声波电动牙...
-                      <span>￥888</span>
-                    </p>
-                  </div>
-                  <div class="swiper-slide shop-div">
-                    <img  class="shop-img" src="https://yanxuan-item.nosdn.127.net/d9376c059ce15a774199e2cedc5a8d63.png?imageView&quality=65&thumbnail=330x330" alt="">
-                    <p class="shop-p" >
-                      全净皓齿变速式声波电动牙...
-                      <span>￥888</span>
-                    </p>
-                  </div>
-                  <div class="swiper-slide shop-div">
-                    <img  class="shop-img" src="https://yanxuan-item.nosdn.127.net/d9376c059ce15a774199e2cedc5a8d63.png?imageView&quality=65&thumbnail=330x330" alt="">
-                    <p class="shop-p" >
-                      全净皓齿变速式声波电动牙...
-                      <span>￥888</span>
-                    </p>
-                  </div>
-                  <div class="swiper-slide shop-div">
-                    <img  class="shop-img" src="https://yanxuan-item.nosdn.127.net/d9376c059ce15a774199e2cedc5a8d63.png?imageView&quality=65&thumbnail=330x330" alt="">
-                    <p class="shop-p" >
-                      全净皓齿变速式声波电动牙...
-                      <span>￥888</span>
-                    </p>
-                  </div>
-                  <div class="swiper-slide shop-div">
-                    <img  class="shop-img" src="https://yanxuan-item.nosdn.127.net/d9376c059ce15a774199e2cedc5a8d63.png?imageView&quality=65&thumbnail=330x330" alt="">
-                    <p class="shop-p" >
-                      全净皓齿变速式声波电动牙...
-                      <span>￥888</span>
-                    </p>
-                  </div>
-                  <div class="swiper-slide shop-div">
-                    <img  class="shop-img" src="https://yanxuan-item.nosdn.127.net/d9376c059ce15a774199e2cedc5a8d63.png?imageView&quality=65&thumbnail=330x330" alt="">
-                    <p class="shop-p" >
-                      全净皓齿变速式声波电动牙...
-                      <span>￥888</span>
-                    </p>
-                  </div>
-                </div>
-                <!-- 如果需要分页器 -->
-                <div class="swiper-pagination"></div>
-
-                </div>
-            </div>
-          </div>
+        <BannerB :privateArr="privateArr"></BannerB>
 
         </div>
-        </div>
-
     </div>
   </div>
 
 </template>
 
 <script type="text/ecmascript-6">
-import Swiper from 'swiper'
+// import Swiper from 'swiper'
 import 'swiper/dist/css/swiper.css'
 import BScroll from '@better-scroll/core'
 
 import HeaderLogin from '../../components/Header/HeaderLogin.vue'
-import Mack from '../../components/Mack/Mack.vue'
 import Banner from '../../components/Banner/Banner.vue'
+import BannerB from '../../components/BannerB/BannerB.vue'
 
 
     export default {
 
-    data(){
-      return{
-        isShowNav:true,
-        isshowMack:false,
-        ShowNavs:["推荐","家居生活","服饰鞋包","美食酒水","个人清洁","母婴用品","运动旅行","数码家电","全球特色"],
-        classIndex:0
-      }
-    },
-    components:{
-      HeaderLogin,
-      Mack,
-      Banner
-    },
-    mounted(){
-        new Swiper ('.swiper-container', {
-          loop: true, // 循环模式选项
-          pagination: { //小圆点
-            el: '.swiper-pagination',
-          },
-          autoplay:true //自动轮播
+      data(){
+        return{
+          isShowNav:true, //导航隐藏和显示
+          isshowMack:false,//遮罩隐藏和显示
+          ShowNavs:["推荐","家居生活","服饰鞋包","美食酒水","个人清洁","母婴用品","运动旅行","数码家电","全球特色"],
+          classIndex:0 ,//点击变色
 
-        })
-        new Swiper('.swiper-container2',{
-          slidesPerView : 3
+        }
+      },
 
-        })
+
+      components:{
+        HeaderLogin,
+        Banner,
+        BannerB
+      },
+      computed: {
+        policyDescList () {
+          return this.$store.state.home.policyDescList
+        },
+        kingKongModule () {
+          return this.$store.state.home.kingKongModule.kingKongList
+        },
+        goodShops () {
+          return this.$store.state.home.goodShops
+        },
+        private () {
+          return this.$store.state.home.private
+        },
+        privateArr () {
+          let smallArr = []
+          const bigArr=[]
+
+          for (let i  = 0; i < this.private.length; i++) {
+            if(smallArr.length===0){
+              bigArr.push(smallArr)
+            }
+            smallArr.push(this.private[i])
+            if(smallArr.length===3){
+              smallArr=[]
+            }
+          }
+          return bigArr
+        }
+
+      },
+      mounted(){
+       this.$store.dispatch('getPolicyDesc')
         new BScroll('.nav-left', {
-              startX:0,
-              click:true,
-              scrollX:true,
-              scrollY:false
-          })
-     },
-    methods:{
-      showHidden(){
-        this.isShowNav=false
-        this.isshowMack=true
+          startX:0,
+          click:true,
+          scrollX:true,
+          scrollY:false
+        })
+       },
+      methods:{
+        showHidden(){
+          this.isShowNav=!this.isShowNav
+          this.isshowMack=!this.isshowMack
+        },
+        changeColor(index){
+          this.classIndex=index
+        }
       },
-      showMack(){
-        this.isshowMack=false
-      },
-      changeColor(index){
-        this.classIndex=index
-      }
-    }
 
-  }
+    }
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
@@ -377,47 +254,87 @@ import Banner from '../../components/Banner/Banner.vue'
           display  flex
           background-color #fff
           .nav-left
-            width 80%
+            width 100%
             height 60px
             overflow hidden
             .nav-list
-              width 1400px
               height 100%
-              display flex
+              display inline-block
+              white-space nowrap
               .nav-item
-                flex-shrink 0 //禁止压缩
                 height 60px
-                margin 0 20px
+                margin 0 22px
                 font-size 30px
                 line-height 60px
                 text-align center
+                display inline-block
                 &.active
                   border-bottom 1px solid #b4282d
                   color #b4282d
           .nav-more
             display inline-block
-            width 20%
+            width 158px
             height 60px
+            background-color #fff
+            margin-left -158px
+            padding-left 80px
+            box-sizing border-box
             .nav-img
               display inline-block
-              width 30px
-              height 30px
-              margin-left 60px
-              background-size 30px 30px
-              background-image url(//yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/arrow-down-3-799ded53ea.png)
-
-        // 轮播图
-        #banner
-          width 100%
-          height 370px
-          .swiper-container
+              width 100%
+              height 100%
+              /*margin-left 20PX*/
+              box-sizing border-box
+              .iconfont
+                font-size  30px 30px
+                display inline-block
+                &.isRotate
+                 transform:rotate(180deg)
+          .mack
             width 100%
-            height 100%
-            .swiper-wrapper
-            .swiper-slide
-              img
+            height 372px
+            background-color #fff
+            .mack-whole
+              z-index 2
+              height 60px
+              width 100%
+              display flex
+              box-sizing border-box
+              border-top 1px solid #eee
+              .mack-text
+                z-index 3
+                padding-left 20px
+                height 60px
                 width 100%
-                height 370px
+                font-size 30px
+                color #333
+                line-height 60px
+            .mack-all
+              width 100%
+              height 312px
+              margin-top 20px
+              z-index 2
+              background-color #fff
+              .mack-ul
+                width 100%
+                height 100%
+                display flex
+                flex-wrap wrap
+                .mack-li
+                  font-size 25px
+                  width 70PX
+                  height 25PX
+                  border 1px solid #ccc
+                  margin-bottom 40px
+                  margin-left 40px
+                  text-align center
+                  line-height 50px
+                  color #333
+                  background-color #eee
+                  &.active
+                    border 1px solid #b4282d
+                    color #b4282d
+
         //商家承诺
         #app-serve
           width 100%
@@ -437,18 +354,11 @@ import Banner from '../../components/Banner/Banner.vue'
               padding 0 10rpx
               justify-content flex-start
               align-items center
-              .icon
+              img
                 display inline-block
                 width 32px
                 height 32px
-                background-size 32px
                 vertical-align middle
-              .icon-1
-                background-image url(https://yanxuan.nosdn.127.net/a03dd909803b9ac032eba58b7253a2f6.png)
-              .icon-2
-                background-image url(https://yanxuan.nosdn.127.net/2d0402ffcd52b3ec3b07422681c42a89.png)
-              .icon-3
-                background-image url(https://yanxuan.nosdn.127.net/a03dd909803b9ac032eba58b7253a2f6.png)
               span
                 font-size 20px
                 color #333
@@ -526,40 +436,6 @@ import Banner from '../../components/Banner/Banner.vue'
                   img
                     width 150px
                     height 150px
-
-        // 私人定制
-        #custom-container
-          width 100%
-          height 470px
-          background-color #fff
-          .custom-text
-            width 100%
-            height 100px
-            font-size 34px
-            color #333
-            line-height 100px
-            padding 0 20px
-          .custom-shops
-            width 100%
-            height 370px
-            .custom-shop
-              width 100%
-              height 370px
-              .shop-div
-                display flex
-                flex-direction column
-                .shop-img
-                  width 216px
-                  height 216px
-                  margin 0 auto
-                .shop-p
-                  font-size 25px
-                  text-align center
-                  span
-                    color red
-
-
-
 
 
 </style>

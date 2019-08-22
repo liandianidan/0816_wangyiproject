@@ -3,7 +3,9 @@
       <div class="header">
         <form action="" class="search-form">
           <i class="iconfont icon-sousuo"></i>
-          <input class='search-input' type='text' placeholder="迪奥999，你值的拥有"/>
+          <input class='search-input' type='text' placeholder="迪奥999，你值的拥有"
+          v-model="userData"/>
+          <div class="search-error" v-show="userData" @click="clearInput">X</div>
         </form>
         <div class="search-text" @click="$router.push('/home')">
           <span>取消</span>
@@ -55,7 +57,16 @@
 
 <script type="text/ecmascript-6">
   export default {
-
+    data(){
+      return{
+        userData:''
+      }
+    },
+    methods:{
+      clearInput(){
+        this.userData=''
+      }
+    }
   }
 </script>
 
@@ -88,6 +99,14 @@
           margin-left 8px
           background-color #f4f4f4
           outline none
+        .search-error
+          width 40px
+          height 40px
+          font-size 18px
+          text-align center
+          line-height 40px
+          background-color #cccccc
+          border-radius 50%
       .search-text
         font-size 30px
 

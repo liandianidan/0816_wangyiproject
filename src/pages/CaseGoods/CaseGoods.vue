@@ -131,6 +131,51 @@
                   <img src="https://yanxuan.nosdn.127.net/8f3c48c48e5944d8f1a37273281201be.png?quality=95&thumbnail=130x130&imageView"
                        alt="">
                 </li>
+                <li class="casegoods-img-li">
+                  <img src="https://yanxuan.nosdn.127.net/8f3c48c48e5944d8f1a37273281201be.png?quality=95&thumbnail=130x130&imageView"
+                       alt="">
+                </li>
+                <li class="casegoods-img-li">
+                  <img src="https://yanxuan.nosdn.127.net/8f3c48c48e5944d8f1a37273281201be.png?quality=95&thumbnail=130x130&imageView"
+                       alt="">
+                </li>
+                <li class="casegoods-img-li">
+                  <img src="https://yanxuan.nosdn.127.net/8f3c48c48e5944d8f1a37273281201be.png?quality=95&thumbnail=130x130&imageView"
+                       alt="">
+                </li>
+                <li class="casegoods-img-li">
+                  <img src="https://yanxuan.nosdn.127.net/8f3c48c48e5944d8f1a37273281201be.png?quality=95&thumbnail=130x130&imageView"
+                       alt="">
+                </li>
+                <li class="casegoods-img-li">
+                  <img src="https://yanxuan.nosdn.127.net/8f3c48c48e5944d8f1a37273281201be.png?quality=95&thumbnail=130x130&imageView"
+                       alt="">
+                </li>
+                <li class="casegoods-img-li">
+                  <img src="https://yanxuan.nosdn.127.net/8f3c48c48e5944d8f1a37273281201be.png?quality=95&thumbnail=130x130&imageView"
+                       alt="">
+                </li>
+                <li class="casegoods-img-li">
+                  <img src="https://yanxuan.nosdn.127.net/8f3c48c48e5944d8f1a37273281201be.png?quality=95&thumbnail=130x130&imageView"
+                       alt="">
+                </li>
+                <li class="casegoods-img-li">
+                  <img src="https://yanxuan.nosdn.127.net/8f3c48c48e5944d8f1a37273281201be.png?quality=95&thumbnail=130x130&imageView"
+                       alt="">
+                </li>
+                <li class="casegoods-img-li">
+                  <img src="https://yanxuan.nosdn.127.net/8f3c48c48e5944d8f1a37273281201be.png?quality=95&thumbnail=130x130&imageView"
+                       alt="">
+                </li>
+                <li class="casegoods-img-li">
+                  <img src="https://yanxuan.nosdn.127.net/8f3c48c48e5944d8f1a37273281201be.png?quality=95&thumbnail=130x130&imageView"
+                       alt="">
+                </li>
+                <li class="casegoods-img-li">
+                  <img src="https://yanxuan.nosdn.127.net/8f3c48c48e5944d8f1a37273281201be.png?quality=95&thumbnail=130x130&imageView"
+                       alt="">
+                </li>
+
               </ul>
             </div>
           </div>
@@ -179,6 +224,7 @@
         effect : 'fade',
         autoplay:true
       })
+
     }
 
   }
@@ -195,6 +241,7 @@
         position fixed
         top 0
         left 0
+        width 100%
         #casegoods-header
           width 100%
           height 88px
@@ -247,15 +294,19 @@
             .casegoods-list
               height 100%
               padding-bottom 10px
-              display flex
+              /*display flex*/
+              display inline-block
               border-bottom 2px solid #eee
               box-sizing border-box
+              white-space nowrap
               .casegoods-item
                 font-size 30px
-                margin 0 15px
-                display flex
-                justify-content center
-                align-items center
+                margin 0 10px
+                /*margin 0 15px*/
+                /*display flex*/
+                /*justify-content center*/
+                /*align-items center*/
+                display inline-block
                 flex-shrink 0
                 &.active
                   border-bottom 2px solid #B4282D
