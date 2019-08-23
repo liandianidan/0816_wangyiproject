@@ -5,50 +5,25 @@
         <!--头部-->
         <div id="casegoods-header">
           <div class="casegoods-header-content">
-            <div class="casegoods-home" @click="$router.push('/home')">
-              <i class="iconfont icon-shouye"></i>
-            </div>
             <Header>
               <div class="casegoods-text" slot="casegoods">
                 <span class="casegoods-span1 active">发现</span>
-                <span class="casegoods-span2">甄选家</span>
+                <span class="casegoods-span2">
+                <router-link to="/teueselecthome">甄选家</router-link>
+                </span>
               </div>
             </Header>
-            <div class="icon-casegoods">
-              <i class="iconfont icon-sousuo" @click="$router.push('/search')"></i>
-              <i class="iconfont icon-gouwuche" @click="$router.push('/shopping')"></i>
-            </div>
 
           </div>
 
         </div>
+
         <!--导航-->
         <div id="casegoods-nav">
           <div class="nav">
             <ul class="casegoods-list">
-              <li class="casegoods-item active">
-                <span>盛夏特别版</span>
-              </li>
-              <li class="casegoods-item">
-                <span>盛夏特别版</span>
-              </li>
-              <li class="casegoods-item">
-                <span>盛夏特别版</span>
-              </li>
-              <li class="casegoods-item">
-                <span>盛夏特别版</span>
-              </li>
-              <li class="casegoods-item">
-                <span>盛夏特别版</span>
-              </li>
-              <li class="casegoods-item">
-                <span>盛夏特别版</span>
-              </li>
-              <li class="casegoods-item">
-                <span>盛夏特别版</span>
-              </li>
-              <li class="casegoods-item">
-                <span>盛夏特别版</span>
+              <li class="casegoods-item" v-for="(item,index) in goodslist" :key="index" :class="{active:goodIndex === index}" @click="goodsClick(index)">
+                <span>{{item.tabName}}</span>
               </li>
             </ul>
           </div>
@@ -208,10 +183,18 @@
   import BScroll from '@better-scroll/core'
   import Swiper from 'swiper'
   import 'swiper/dist/css/swiper.css'
+  import Header from '../../components/Header/Header.vue'
   import HeaderLogin from '../../components/Header/HeaderLogin'
   export default {
+    data(){
+      return{
+        goodIndex:0,
+
+      }
+    },
     components:{
-      HeaderLogin
+      HeaderLogin,
+      Header
     },
     mounted(){
       new BScroll('.nav', {
@@ -224,8 +207,20 @@
         effect : 'fade',
         autoplay:true
       })
+      this.$store.dispatch('getGoodList')
+    },
+    computed:{
+      goodslist(){
+        return this.$store.state.caseGoods.navLists
+      }
+    },
+    methods:{
+      goodsClick(index){
+        this.goodIndex=index
+      },
 
     }
+
 
   }
 </script>
@@ -279,10 +274,6 @@
                 font-size 50px
               .icon-gouwuche
                 margin-left 40px
-
-
-
-
         #casegoods-nav
           width 100%
           height 72px
@@ -293,6 +284,7 @@
             height 72px
             .casegoods-list
               height 100%
+              width 1200px
               padding-bottom 10px
               /*display flex*/
               display inline-block
@@ -301,7 +293,7 @@
               white-space nowrap
               .casegoods-item
                 font-size 30px
-                margin 0 10px
+                margin 0 25px
                 /*margin 0 15px*/
                 /*display flex*/
                 /*justify-content center*/
@@ -311,62 +303,6 @@
                 &.active
                   border-bottom 2px solid #B4282D
                   color #B4282D
-
-
-
-
-        #casegoods-header2
-          width 100%
-          margin-bottom 20px
-          background white
-          z-index 999
-          .header
-            display flex
-            height 88px
-            width 100%
-            padding 25px
-            box-sizing border-box
-            .header-text
-              width 138px
-              height 40px
-              display inline-block
-              margin-right  20px
-              margin-top 5PX
-              background-size 138px 40px
-              background-image url(//yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/indexLogo-a90bdaae6b.png)
-            .header-input
-              width 442px
-              height 56px
-              background  #ededed
-              display flex
-              border-radius 5px
-              justify-content: center
-              align-items center
-              vertical-align middle
-            .icon
-              width 28px
-              height 28px
-              margin-right  10px
-              background-image url(//yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/search2-553dba3aff.png);
-              background-size 28px 28px
-              color #666
-            .header-search
-              font-size 28px
-              color #666
-              vertical-align middle
-            .header-btn
-              width 74px
-              height 40px
-              font-size 20px
-              border-radius 5px
-              margin 10px 0 0 15px
-              text-align center
-              line-height 40px
-              background white
-              border 1px solid #b4282d
-              color #b4282d
-
-
       #casegoods-content
         width 100%
         .casegoods-img-shiwu

@@ -5,7 +5,8 @@ import Classify from '../pages/Classify/Classify.vue'
 import Aperson from '../pages/Aperson/Aperson.vue'
 import CaseGoods from '../pages/CaseGoods/CaseGoods.vue'
 import Shopping from '../pages/Shopping/Shopping.vue'
-import Search from "../pages/Search/Search";
+import Search from "../pages/Search/Search.vue"
+import TeueSelectHome from '../pages/TeueSelectHome/TeueSelectHome.vue'
 
 export default[
   {
@@ -35,6 +36,10 @@ export default[
     meta:{
       isShowFooter:true //底部是否显示
     }
+  },
+  {
+    path:"/teueselecthome",
+    component:TeueSelectHome,
   },
   {
     path:"/shopping",

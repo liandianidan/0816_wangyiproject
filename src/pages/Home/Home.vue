@@ -40,16 +40,7 @@
         <!-- 轮播图 -->
         <Banner></Banner>
         <!-- 商家服务 -->
-        <div id="app-serve">
-            <ul class="app-list">
-                <li class="serve-item" v-for="(item,index) in policyDescList" :key="index">
-                  <a href="#">
-                    <img :src="item.icon" alt="">
-                    <span>{{item.desc}}</span>
-                  </a>
-                </li>
-            </ul>
-        </div>
+        <Serve :policyDescList="policyDescList"></Serve>
         </div>
         <!-- 首页下半部 -->
         <div id="bottom-conterner">
@@ -89,7 +80,9 @@
         </div>
         <!-- 私人定制 -->
         <BannerB :privateArr="privateArr"></BannerB>
-
+        <!--限时购-->
+          <FlashSale></FlashSale>
+          <ShopsList></ShopsList>
         </div>
     </div>
   </div>
@@ -97,15 +90,15 @@
 </template>
 
 <script type="text/ecmascript-6">
-// import Swiper from 'swiper'
-import 'swiper/dist/css/swiper.css'
+
 import BScroll from '@better-scroll/core'
 
 import HeaderLogin from '../../components/Header/HeaderLogin.vue'
 import Banner from '../../components/Banner/Banner.vue'
 import BannerB from '../../components/BannerB/BannerB.vue'
-
-
+import Serve from '../../components/Serve/Serve.vue'
+import FlashSale from '../../components/FlashSale/FlashSale'
+import ShopsList from './ShopsList.vue'
     export default {
 
       data(){
@@ -122,7 +115,10 @@ import BannerB from '../../components/BannerB/BannerB.vue'
       components:{
         HeaderLogin,
         Banner,
-        BannerB
+        BannerB,
+        Serve,
+        FlashSale,
+        ShopsList
       },
       computed: {
         policyDescList () {
@@ -200,54 +196,6 @@ import BannerB from '../../components/BannerB/BannerB.vue'
           margin-bottom 20px
           background white
           z-index 999
-          .header
-            display flex
-            height 88px
-            width 100%
-            padding 25px
-            background-color #fff
-            box-sizing border-box
-            .header-text
-              width 138px
-              height 40px
-              display inline-block
-              margin-right  20px
-              margin-top 5PX
-              background-size 138px 40px
-              background-image url(//yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/indexLogo-a90bdaae6b.png)
-            .header-input
-              width 442px
-              height 56px
-              background  #ededed
-              display flex
-              border-radius 5px
-              justify-content: center
-              align-items center
-              vertical-align middle
-             .icon
-                width 28px
-                height 28px
-                margin-right  10px
-                background-image url(//yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/search2-553dba3aff.png);
-                background-size 28px 28px
-                color #666
-              .header-search
-                font-size 28px
-                color #666
-                vertical-align middle
-            .header-btn
-             width 74px
-             height 40px
-             font-size 20px
-             border-radius 5px
-             margin 10px 0 0 15px
-             text-align center
-             line-height 40px
-             background white
-             border 1px solid #b4282d
-             color #b4282d
-
-
         // 导航
         #nav
           width 100%
@@ -335,34 +283,6 @@ import BannerB from '../../components/BannerB/BannerB.vue'
                     border 1px solid #b4282d
                     color #b4282d
 
-        //商家承诺
-        #app-serve
-          width 100%
-          height 72px
-          .app-list
-            width 100%
-            height 72px
-            display flex
-            padding 0 20px
-            box-sizing border-box
-            justify-content space-around
-            align-items center
-            .serve-item
-              width 456px
-              height 72px
-              display flex
-              padding 0 10rpx
-              justify-content flex-start
-              align-items center
-              img
-                display inline-block
-                width 32px
-                height 32px
-                vertical-align middle
-              span
-                font-size 20px
-                color #333
-                vertical-align middle
         // 商品展示
         #shop-show
           width 100%

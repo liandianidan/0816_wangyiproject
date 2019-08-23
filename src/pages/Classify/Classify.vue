@@ -9,10 +9,10 @@
         </div>
       </div>
       <!--分类的内容区-->
-      <div id="classify-c">
+      <div id="classify-c" v-if="isShow">
         <!--内容的左边-->
         <div id="classify-left">
-          <div class="classify-container">
+          <div class="classify-container" ref="xx">
             <ul class="classify-list">
               <li class="classify-item" v-for="(item, index) in categoryL1List"
                   :key="index" @click="isColor(index)" :class="{active:clickIndex===index}">
@@ -22,27 +22,7 @@
           </div>
         </div>
         <!--内容的右边-->
-        <div id="classify-right">
-          <div class="classify-r">
-            <div class="classify-l" >
-              <div class="classify-top" >
-                <img src="https://yanxuan.nosdn.127.net/5b4ca33a0205482398006405c1db15e8.jpg?imageView&thumbnail=0x196" alt="">
-              </div>
-              <div class="classify-bottom">
-                <ul class="classify-ul">
-                  <li class="classify-li" v-for="(item, index) in categoryL2List"
-            :key="index">
-                    <div class="classify-div">
-                      <img :src="item.bannerUrl" alt="">
-                      <span>{{item.name}}</span>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-          </div>
-        </div>
+       <ClassifyRight :leftIndex="clickIndex"/>
       </div>
     </div>
   </div>
@@ -50,37 +30,61 @@
 
 <script type="text/ecmascript-6">
   import BScroll from '@better-scroll/core'
-  import {mapState} from 'vuex'
+  // import {mapState} from 'vuex'
+  import ClassifyRight from './ClassifyRight'
   export default {
     data(){
       return{
-        clickIndex:0
+        clickIndex:0,
+        isShow:false
       }
     },
+    components:{
+      ClassifyRight
+    },
+    computed: {
+      categoryL1List() {
+        return this.$store.state.classify.categorys.categoryL1List
+    },
 
-    computed:mapState({
-      categoryL1List: state => state.classify.categorys.categoryL1List,
-      categoryL2List: state => state.classify.categorys.categoryL2List
-      }),
 
-    mounted() {
-      new BScroll('.classify-container', {
-        probeType: 1, // 触摸   低频(非实时)
-        click: true, // 标识分发点击事件
+    },
+    async  mounted() {
+
+
+      await this.$store.dispatch('getshowlist')
+      this.isShow=true
+      this.$nextTick(() => {
+        console.log(this.$refs.xx)
+        new BScroll('.classify-container', {
+          probeType: 1, // 触摸   低频(非实时)
+          click: true, // 标识分发点击事件
+        })
       })
-      new BScroll('.classify-r', {
-        probeType: 1, // 触摸   低频(非实时)
-        click: true, // 标识分发点击事件
-      })
+      console.log(this.categoryL1List)
 
-      this.$store.dispatch('getshowlist')
+
+
     },
     methods:{
       isColor(index){
         this.clickIndex=index
 
       }
+    },
+    watch: {
+      categoryL1List(){
+        this.$nextTick(()=>{
+          console.log(this.$refs.xx)
+        })
+
+      }
     }
+    // watch () {
+      // categoryL1List(){
+      //   console.log(this.$refs.xx)
+      // }
+    // }
   }
 </script>
 
@@ -158,51 +162,6 @@
               span
                 font-size 28px
                 color #333
-      #classify-right
-        width 588px
-        height 100%
-        padding-bottom 98px
-        padding-top 25px
-        box-sizing border-box
-        background-color #fff
-        overflow hidden
-        .classify-r
-          width 100%
-          height 800px
-          padding 20px
-          box-sizing border-box
-          .classify-l
-             width 100%
-             height  900px
-             .classify-top
-                width 528px
-                height 192px
-                margin 0  auto 30px
-                img
-                  width 100%
-                  height 100%
-             .classify-bottom
-                width 100%
-                .classify-ul
-                  width 100%
-                  display flex
-                  flex-wrap wrap
 
-                  .classify-li
-                    width 144px
-                    height 216px
-                    padding-right 30px
-                    .classify-div
-                      height 100%
-                      img
-                        width 144px
-                        height 144px
-                        display block
-                      span
-                        font-size 25px
-                        text-align center
-                        display -webkit-box
-                        width 144px
-                        height 72px
 
 </style>
