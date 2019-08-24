@@ -1,7 +1,7 @@
 <template>
   <div class="text">
     <div class="left">
-      <span>{{title}}</span>
+      <span>{{this.title}}</span>
       <slot name="middle"></slot>
     </div>
     <a class='more'>更多></a>
@@ -10,7 +10,11 @@
 
 <script type="text/ecmascript-6">
   export default {
-
+    data() {
+      return{
+        title:'人气推荐'
+      }
+    }
   }
 </script>
 
@@ -18,13 +22,13 @@
   .text
     display flex
     justify-content space-between
-    height 50px
+    height 100px
     padding 0 15px
     box-sizing border-box
     align-items center
     .left
       span
-        font-size 16px
+        font-size 30px
         float left
       .countdown
         float left

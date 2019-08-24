@@ -10,13 +10,18 @@
       <div class="login-way">
         <div class="cell-phone-number">
           <div class="cell-input">
-            <input type='text' placeholder="邮箱"/>
+            <input type='text' placeholder="邮箱" v-model="email" name="myemail"
+            v-validate="'required|email'"/>
+            <span  v-show="errors.has('myemail')">
+              {{errors.first('myemail')}}
+            </span>
           </div>
         </div>
         <div class="auth-code">
           <div class="auth-code-a">
             <div class="auth-code-b">
-              <input type='text' placeholder="密码"/>
+              <input type='text' placeholder="密码" v-model="emailPws" name="emailPws" v-validate="{required:true,regex:/^\d{6}$/}"/>
+              <span  v-show="errors.has('emailPws')">{{ errors.first('emailPws') }}</span>
             </div>
           </div>
         </div>
@@ -41,14 +46,13 @@
 <script type="text/ecmascript-6">
   export default {
     props:['Toggle'],
-    methods:{
-      elseLogin(){
-        this.showEntrance=true
-        this.showMobile=false
-        this.$emit('aaaa')
-      },
-    }
+   data(){
+     return{
+       email:'', //邮箱
+       emailPws:'', //邮箱密码
 
+     }
+   }
   }
 </script>
 
@@ -83,6 +87,10 @@
           input
             outline none
             font-size 35px
+          span
+            display block
+            font-size 30px
+            color red
       .auth-code
         display flex
         width 100%
@@ -99,7 +107,10 @@
             input
               outline none
               font-size 35px
-
+            span
+              display block
+              font-size 30px
+              color red
 
       .auth-issue
         display flex

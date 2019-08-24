@@ -42,19 +42,17 @@
         <div class="swiper-pagination"></div>
       </div>
     </div>
-    <!--<Banner></Banner>-->
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   import Header from '../../components/Header/Header.vue'
-  // import Banner from '../../components/Banner/Banner.vue'
   import Swiper from 'swiper'
   import 'swiper/dist/css/swiper.css'
   export default {
     components:{
       Header,
-      // Banner
+
 
     },
     mounted(){
@@ -66,7 +64,9 @@
         },
         autoplay:true //自动轮播
       })
-    }
+      this.$store.dispatch('gethomelunbo')
+    },
+
   }
 </script>
 

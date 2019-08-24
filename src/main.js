@@ -4,6 +4,7 @@ import 'amfe-flexible' //设配
 import router from './router'
 import './mock/mock-server'
 import store from './vuex/store'
+import './validate.js'
 
 import './api'
 

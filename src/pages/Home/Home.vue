@@ -6,35 +6,37 @@
         <!-- 头部 -->
         <header id="header">
           <!-- 搜索框 -->
-          <HeaderLogin></HeaderLogin>
-          <!-- 导航 -->
-          <div id="nav" >
-            <div class="nav-left" v-show="isShowNav">
-              <ul class="nav-list">
-                <li class="nav-item" v-for="(item, index) in ShowNavs"
-                    :key="index"
-                    @click="changeColor(index)" :class="{active:classIndex === index }">
-                  <span>{{item}}</span>
-                </li>
-              </ul>
-            </div>
-            <div class="mack" v-show="isshowMack" @click="showHidden">
-              <div class="mack-whole">
-                <div class="mack-text">全部频道</div>
-              </div>
-              <div class="mack-all">
-                <ul class="mack-ul">
-                  <li class="mack-li" v-for="(item,index) in ShowNavs " :key="index" :class="{active:classIndex === index }">{{item}}</li>
+          <div class="header-a">
+            <HeaderLogin></HeaderLogin>
+            <!-- 导航 -->
+            <div id="nav" >
+              <div class="nav-left" v-show="isShowNav">
+                <ul class="nav-list">
+                  <li class="nav-item" v-for="(item, index) in ShowNavs"
+                      :key="index"
+                      @click="changeColor(index)" :class="{active:classIndex === index }">
+                    <span>{{item}}</span>
+                  </li>
                 </ul>
               </div>
-              <div class="mack"></div>
-            </div>
-            <div class="nav-more" @click="showHidden" >
-              <div class="nav-img" >
-                <i class="iconfont icon-xiangxia1" :class="{isRotate:isShowNav}"></i>
+              <div class="mack" v-show="isshowMack" @click="showHidden">
+                <div class="mack-whole">
+                  <div class="mack-text">全部频道</div>
+                </div>
+                <div class="mack-all">
+                  <ul class="mack-ul">
+                    <li class="mack-li" v-for="(item,index) in ShowNavs " :key="index" :class="{active:classIndex === index }">{{item}}</li>
+                  </ul>
+                </div>
+                <div class="mack"></div>
               </div>
-            </div>
+              <div class="nav-more" @click="showHidden" >
+                <div class="nav-img" >
+                  <i class="iconfont icon-xiangxia1" :class="{isRotate:isShowNav}"></i>
+                </div>
+              </div>
 
+            </div>
           </div>
         </header>
         <!-- 轮播图 -->
@@ -81,6 +83,7 @@
         <!-- 私人定制 -->
         <BannerB :privateArr="privateArr"></BannerB>
         <!--限时购-->
+          <FlashSale></FlashSale>
           <FlashSale></FlashSale>
           <ShopsList></ShopsList>
         </div>
@@ -196,92 +199,94 @@ import ShopsList from './ShopsList.vue'
           margin-bottom 20px
           background white
           z-index 999
-        // 导航
-        #nav
-          width 100%
-          display  flex
-          background-color #fff
-          .nav-left
-            width 100%
-            height 60px
-            overflow hidden
-            .nav-list
-              height 100%
-              display inline-block
-              white-space nowrap
-              .nav-item
-                height 60px
-                margin 0 22px
-                font-size 30px
-                line-height 60px
-                text-align center
-                display inline-block
-                &.active
-                  border-bottom 1px solid #b4282d
-                  color #b4282d
-          .nav-more
-            display inline-block
-            width 158px
-            height 60px
+          .header-a
             background-color #fff
-            margin-left -158px
-            padding-left 80px
-            box-sizing border-box
-            .nav-img
-              display inline-block
+            // 导航
+            #nav
               width 100%
-              height 100%
-              /*margin-left 20PX*/
-              box-sizing border-box
-              .iconfont
-                font-size  30px 30px
-                display inline-block
-                &.isRotate
-                 transform:rotate(180deg)
-          .mack
-            width 100%
-            height 372px
-            background-color #fff
-            .mack-whole
-              z-index 2
-              height 60px
-              width 100%
-              display flex
-              box-sizing border-box
-              border-top 1px solid #eee
-              .mack-text
-                z-index 3
-                padding-left 20px
-                height 60px
-                width 100%
-                font-size 30px
-                color #333
-                line-height 60px
-            .mack-all
-              width 100%
-              height 312px
-              margin-top 20px
-              z-index 2
+              display  flex
               background-color #fff
-              .mack-ul
+              .nav-left
                 width 100%
-                height 100%
-                display flex
-                flex-wrap wrap
-                .mack-li
-                  font-size 25px
-                  width 70PX
-                  height 25PX
-                  border 1px solid #ccc
-                  margin-bottom 40px
-                  margin-left 40px
-                  text-align center
-                  line-height 50px
-                  color #333
-                  background-color #eee
-                  &.active
-                    border 1px solid #b4282d
-                    color #b4282d
+                height 60px
+                overflow hidden
+                .nav-list
+                  height 100%
+                  display inline-block
+                  white-space nowrap
+                  .nav-item
+                    height 60px
+                    margin 0 22px
+                    font-size 30px
+                    line-height 60px
+                    text-align center
+                    display inline-block
+                    &.active
+                      border-bottom 1px solid #b4282d
+                      color #b4282d
+              .nav-more
+                display inline-block
+                width 158px
+                height 60px
+                background-color #fff
+                margin-left -158px
+                padding-left 80px
+                box-sizing border-box
+                .nav-img
+                  display inline-block
+                  width 100%
+                  height 100%
+                  /*margin-left 20PX*/
+                  box-sizing border-box
+                  .iconfont
+                    font-size  30px 30px
+                    display inline-block
+                    &.isRotate
+                     transform:rotate(180deg)
+              .mack
+                width 100%
+                height 372px
+                background-color #fff
+                .mack-whole
+                  z-index 2
+                  height 60px
+                  width 100%
+                  display flex
+                  box-sizing border-box
+                  border-top 1px solid #eee
+                  .mack-text
+                    z-index 3
+                    padding-left 20px
+                    height 60px
+                    width 100%
+                    font-size 30px
+                    color #333
+                    line-height 60px
+                .mack-all
+                  width 100%
+                  height 312px
+                  margin-top 20px
+                  z-index 2
+                  background-color #fff
+                  .mack-ul
+                    width 100%
+                    height 100%
+                    display flex
+                    flex-wrap wrap
+                    .mack-li
+                      font-size 25px
+                      width 70PX
+                      height 25PX
+                      border 1px solid #ccc
+                      margin-bottom 40px
+                      margin-left 40px
+                      text-align center
+                      line-height 50px
+                      color #333
+                      background-color #eee
+                      &.active
+                        border 1px solid #b4282d
+                        color #b4282d
 
         // 商品展示
         #shop-show

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="login-a">
     <Header>
       <div  class="icon-img" slot="aperson"></div>
     </Header>
@@ -44,13 +44,9 @@
       </div>
     </div>
     <!--手机登录-->
-
-    <MobileLogin  :Toggle="Toggle" v-if="isShow === 1"/>
-
-
+     <MobileLogin  :Toggle="Toggle" v-if="isShow === 1"/>
     <!--邮箱登录-->
-
-    <EmailLogin :Toggle="Toggle" v-if="isShow === 2" ></EmailLogin>
+      <EmailLogin :Toggle="Toggle" v-if="isShow === 2" ></EmailLogin>
   </div>
 </template>
 
@@ -80,7 +76,9 @@
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-
+ .login-a
+   height 100%
+   background-color #fff
    .login-entrance
       #content
         width 100%
@@ -150,8 +148,6 @@
           .qq
             border-left 1px solid #979797
             border-right 1px solid #979797
-
-
 
 
 </style>

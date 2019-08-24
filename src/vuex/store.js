@@ -7,6 +7,7 @@ import classify from './modules/classify'
 import searchs from './modules/searchs'
 import caseGoods from './modules/caseGoods'
 
+
 import mutations from  './mutations.js'
 import actions from  './actions.js'
 import getters from  './getters.js'

@@ -15,3 +15,5 @@ export const reqSearchDefault = (userData) => ajax({
 export const reqSearchNoDefault =()=>ajax.get('/xhr/search/init.json')
 
 export const reqCaseGoods=()=>ajax.get('/topic/v1/find/getTabs.json')
+
+export const reqzhenxuanjialunbo=()=>ajax.get('/xhr/cart/getMiniCartNum.json')
